@@ -11,8 +11,7 @@ app.get("/smart-home/garage-door/close", async (req, res) => {
 });
 
 app.get("/smart-home/garage-door/open", async (req, res) => {
-  await openGarageDoor();
-  const state = await garageDoorState();
+  const state = await openGarageDoor();
   res.send(`garage door is ${state}`);
 });
 
