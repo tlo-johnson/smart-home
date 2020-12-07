@@ -6,15 +6,14 @@ const { openGarageDoor, closeGarageDoor, garageDoorState } = require("./garage-d
 const port = 80;
 
 app.get("/smart-home/garage-door/close", async (req, res) => {
-  console.log("closing the garage door");
-  await closeGarageDoor();
-  res.send("ok");
+  const state = await closeGarageDoor();
+  res.send(`garage door is ${state}`);
 });
 
 app.get("/smart-home/garage-door/open", async (req, res) => {
-  console.log("opening the garage door");
   await openGarageDoor();
-  res.send("ok");
+  const state = await garageDoorState();
+  res.send(`garage door is ${state}`);
 });
 
 app.get("/smart-home/garage-door", async (req, res) => {

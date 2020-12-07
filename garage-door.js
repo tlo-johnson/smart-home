@@ -9,6 +9,7 @@ const openGarageDoor = async () => {
   await init();
   await account.setDoorState(garage.serial_number, MyQ.actions.door.OPEN);
   await waitForState(doorStates.open);
+  return await garageDoorState();
 };
 module.exports.openGarageDoor = openGarageDoor;
 
@@ -16,6 +17,7 @@ const closeGarageDoor = async () => {
   await init();
   await account.setDoorState(garage.serial_number, MyQ.actions.door.CLOSE);
   await waitForState(doorStates.closed);
+  return await garageDoorState();
 };
 module.exports.closeGarageDoor = closeGarageDoor;
 
